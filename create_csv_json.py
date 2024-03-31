@@ -20,10 +20,6 @@ new_file_path = os.path.join(output_dir_path, output_file_name)
 json_open = open(read_json_file, 'r')
 json_load = json.load(json_open)
 
-# 列数の読み込み
-print(len(json_load))
-column_no = len(json_load)
-
 # ランダムで文字列入力
 def randomname(n):
    return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
