@@ -1,0 +1,19 @@
+{
+    "column1":{
+        "type":"1",
+        "element1": 10,
+        "element2": 1
+    },
+
+    "column2":{
+        "type":"2",
+        "element1": 1000,
+        "element2": 3000
+    },
+
+    "column3":{
+        "type":"2",
+        "element1": -100000,
+        "element2": 100000
+    }
+}
