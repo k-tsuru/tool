@@ -86,8 +86,10 @@ while no < len(html_link):
     f.close
     str_row = ''
     with open(tmp_file_path, mode='r') as f:
+        # html1行毎に確認
         for line in f:
             keyword_count = 0
+            # JSONで指定したキーワード分確認
             while keyword_count < len(keyword):
                 if keyword[keyword_count] in line:
                     str_row += line[:-1]
@@ -95,6 +97,7 @@ while no < len(html_link):
                     str_row += html_link[no]
                     str_row += '\n'  
                 keyword_count += 1
+        # CSVファイルに書き込み
         output_file.write(str_row)  
     f.close   
     no += 1
