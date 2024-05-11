@@ -9,7 +9,7 @@ credential_path = '【GCPサービスアカウント作成時に作成の鍵フ�
 os.environ['【鍵ファイルが格納されているファイルパスを記載】'] = credential_path
 
 # バケット名を記載
-bucket_name = "pdf_ocr_test_kyosuke_tsuru"
+bucket_name = "【GCSのバケット名を記載】"
 
 client = storage.Client()
 bucket = client.get_bucket(bucket_name)
