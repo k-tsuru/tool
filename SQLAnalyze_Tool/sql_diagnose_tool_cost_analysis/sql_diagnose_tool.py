@@ -9,8 +9,13 @@ if not openai.api_key:
     raise ValueError("環境変数 OPENAI_API_KEY が設定されていません。")
 
 def read_file(filepath):
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return f.read()
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        raise FileNotFoundError(f"指定されたファイルが見つかりません: {filepath}")
+    except IOError as e:
+        raise IOError(f"ファイルの読み込み中にエラーが発生しました: {e}")
 
 # --- ASTベースSQL診断 ---
 def analyze_sql_ast(sql: str):
