@@ -68,8 +68,12 @@ def diagnose_explain(explain_text):
     return issues
 
 # --- 実行計画からコストを抽出し診断（PostgreSQL / MySQL / Oracle対応） ---
-def diagnose_costs(explain_text, threshold=10000):
-    issues = []
+    # Assumes PostgreSQL cost format as "cost=0.00..100.00"
+    # Broadens the pattern to handle variations like "cost=0.00..100.00 rows=123"
+    pg_costs = re.findall(r"cost=\d+\.\d+\.\.(\d+\.\d+)", explain_text)
+    if not pg_costs:
+        pg_costs = re.findall(r"cost=\d+\.\d+\.\.(\d+\.\d+)\s+rows=\d+", explain_text)
+    costs += [float(c) for c in pg_costs]
     costs = []
 
     # PostgreSQL cost=0.00..100.00
